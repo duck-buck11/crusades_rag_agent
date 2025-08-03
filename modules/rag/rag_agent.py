@@ -1,14 +1,18 @@
-from modules.rag.loader import load_documents
+import os
+from dotenv import load_dotenv
+from modules.rag.loader import load_documents_from_s3
+from langchain_openai import OpenAIEmbeddings, OpenAI
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from langchain.chains import RetrievalQA
-from langchain_community.llms import OpenAI
+
+# Load environment variables from .env
+load_dotenv()
 
 def ingest_and_index():
     # Load documents from S3
-    docs: list[Document] = load_documents()
+    docs: list[Document] = load_documents_from_s3("crusades-rag-data-s3", "")
     print(f"Loaded {len(docs)} document(s)")
 
     # Split into chunks
