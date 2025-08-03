@@ -1,11 +1,6 @@
-resource "google_storage_bucket" "this" {
-  name     = var.bucket_name
-  location = var.location
-  project  = var.project_id
-
-  uniform_bucket_level_access = true
-
-  versioning {
-    enabled = true
-  }
+module "gcs_bucket" {
+  source      = "../modules/gcs_bucket"
+  bucket_name = "crusades-rag-data"
+  location    = "us-central1"
+  project_id  = "rag-crusade-pipeline"
 }
