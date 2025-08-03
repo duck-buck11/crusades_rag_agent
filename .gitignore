@@ -2,3 +2,5 @@
 infra/*.tfstate
 infra/*.tfstate.backup
 infra/.terraform/
+.env
+.env
