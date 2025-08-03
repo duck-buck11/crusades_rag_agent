@@ -9,11 +9,11 @@ output "gcs_bucket_url" {
 }
 
 output "s3_bucket_name" {
-  description = "The name of the S3 bucket"
+  description = "S3 bucket name from s3_bucket module"
   value       = module.s3_bucket.bucket_name
 }
 
 output "s3_bucket_arn" {
-  description = "The ARN of the S3 bucket"
+  description = "S3 bucket ARN from s3_bucket module"
   value       = module.s3_bucket.bucket_arn
 }
